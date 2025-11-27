@@ -9,7 +9,7 @@ export default function QuickNoteLanding() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  
+
   const [showQuickNote, setShowQuickNote] = useState(false);
   const [noteText, setNoteText] = useState('');
 
@@ -30,15 +30,15 @@ export default function QuickNoteLanding() {
 
   const handleSubmit = async () => {
     if (!email || !email.includes('@')) return;
-    
+
     setIsLoading(true);
     setError('');
-    
+
     try {
       const { data, error: supabaseError } = await supabase
         .from('waitlist')
         .insert([
-          { 
+          {
             email: email,
             created_at: new Date().toISOString()
           }
@@ -61,21 +61,21 @@ export default function QuickNoteLanding() {
     <div className="min-h-screen bg-black text-white overflow-hidden">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {showQuickNote && (
-        <div 
+        <div
           className="fixed inset-0 z-[99] bg-black/50 backdrop-blur-sm"
-          style={{animation: 'fadeIn 0.2s ease-out'}}
+          style={{ animation: 'fadeIn 0.2s ease-out' }}
         >
-          <div 
+          <div
             className="fixed bottom-8 right-8 w-[450px]"
-            style={{animation: 'slideInFromBottom 0.3s ease-out'}}
+            style={{ animation: 'slideInFromBottom 0.3s ease-out' }}
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-50 animate-pulse"></div>
-            
+
             <div className="relative bg-gradient-to-b from-zinc-900 to-black rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-white/5 backdrop-blur-xl">
                 <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ export default function QuickNoteLanding() {
                     <div className="text-gray-400 text-xs">Just now</div>
                   </div>
                 </div>
-                <button 
+                <button
                   onClick={() => setShowQuickNote(false)}
                   className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors group"
                 >
@@ -156,8 +156,8 @@ export default function QuickNoteLanding() {
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a>
               <a href="#demo" className="text-gray-400 hover:text-white transition-colors">Try Demo</a>
-              <a href="#how" className="text-gray-400 hover:text-white transition-colors">How it works</a>
-              <button 
+              <a href="#pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a>
+              <button
                 onClick={() => document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' })}
                 className="relative group px-6 py-2.5 rounded-xl overflow-hidden"
               >
@@ -187,13 +187,13 @@ export default function QuickNoteLanding() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Press a key. Start typing. That's it. QuickNote appears instantly over any app, 
+            Press a key. Start typing. That's it. QuickNote appears instantly over any app,
             capturing your ideas at the speed of thought.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <button 
+            <button
               onClick={() => document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' })}
               className="group relative px-8 py-4 rounded-xl overflow-hidden w-full sm:w-auto"
             >
@@ -203,7 +203,7 @@ export default function QuickNoteLanding() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </div>
             </button>
-            <a 
+            <a
               href="https://x.com/sabacodes2"
               target="_blank"
               rel="noopener noreferrer"
@@ -222,7 +222,7 @@ export default function QuickNoteLanding() {
             <div className="relative group">
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-              
+
               {/* Main Window */}
               <div className="relative bg-gradient-to-b from-zinc-900 to-black rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
                 {/* Window Header */}
@@ -252,7 +252,7 @@ export default function QuickNoteLanding() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <div className="h-4 bg-gradient-to-r from-indigo-500/50 to-purple-500/50 rounded w-3/4 animate-pulse"></div>
                       <div className="h-4 bg-white/10 rounded w-full"></div>
@@ -482,6 +482,108 @@ export default function QuickNoteLanding() {
         </div>
       </div>
 
+      {/* Pricing Section */}
+      <div id="pricing" className="relative z-10 max-w-7xl mx-auto px-6 py-32">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Simple, transparent <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">pricing</span>
+          </h2>
+          <p className="text-xl text-gray-400">Start for free, upgrade as you grow</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Free Plan */}
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="relative h-full bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 hover:bg-white/10 transition-all">
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-2">Starter</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-bold">$0</span>
+                  <span className="text-gray-400">/month</span>
+                </div>
+                <p className="text-gray-400 mt-4">Perfect for trying out QuickNote</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3 text-gray-300">
+                  <Check className="w-5 h-5 text-indigo-400" />
+                  <span>Unlimited local notes</span>
+                </li>
+                <li className="flex items-center gap-3 text-gray-300">
+                  <Check className="w-5 h-5 text-indigo-400" />
+                  <span>Basic markdown support</span>
+                </li>
+                <li className="flex items-center gap-3 text-gray-300">
+                  <Check className="w-5 h-5 text-indigo-400" />
+                  <span>3 device sync</span>
+                </li>
+              </ul>
+
+              <button
+                onClick={() => document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' })}
+                className="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 transition-colors font-semibold"
+              >
+                Get Started
+              </button>
+            </div>
+          </div>
+
+          {/* Pro Plan */}
+          <div className="relative group">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+            <div className="relative h-full bg-gradient-to-b from-indigo-900/20 to-purple-900/20 backdrop-blur-sm rounded-3xl border border-indigo-500/30 p-8">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-xs font-bold uppercase tracking-wider">
+                Most Popular
+              </div>
+
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-2">Pro</h3>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-bold">$9</span>
+                  <span className="text-gray-400">/month</span>
+                </div>
+                <p className="text-gray-400 mt-4">For power users who need more</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3 text-white">
+                  <div className="p-1 rounded-full bg-indigo-500/20">
+                    <Check className="w-3 h-3 text-indigo-400" />
+                  </div>
+                  <span>Everything in Starter</span>
+                </li>
+                <li className="flex items-center gap-3 text-white">
+                  <div className="p-1 rounded-full bg-indigo-500/20">
+                    <Check className="w-3 h-3 text-indigo-400" />
+                  </div>
+                  <span>Unlimited cloud storage</span>
+                </li>
+                <li className="flex items-center gap-3 text-white">
+                  <div className="p-1 rounded-full bg-indigo-500/20">
+                    <Check className="w-3 h-3 text-indigo-400" />
+                  </div>
+                  <span>Advanced export options</span>
+                </li>
+                <li className="flex items-center gap-3 text-white">
+                  <div className="p-1 rounded-full bg-indigo-500/20">
+                    <Check className="w-3 h-3 text-indigo-400" />
+                  </div>
+                  <span>Priority support</span>
+                </li>
+              </ul>
+
+              <button
+                onClick={() => document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' })}
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:scale-105 transition-all font-semibold shadow-lg shadow-indigo-500/25"
+              >
+                Join Waitlist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Waitlist Section */}
       <div id="waitlist" className="relative z-10 max-w-3xl mx-auto px-6 py-32">
         <div className="relative">
@@ -493,7 +595,7 @@ export default function QuickNoteLanding() {
                   <Sparkles className="w-4 h-4 text-indigo-400" />
                   <span className="text-sm text-indigo-300">Limited Beta Access</span>
                 </div>
-                
+
                 <h2 className="text-4xl md:text-5xl font-bold mb-4">
                   Get early access
                 </h2>
@@ -513,7 +615,7 @@ export default function QuickNoteLanding() {
                       className="w-full pl-12 pr-6 py-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
                     />
                   </div>
-                  
+
                   <button
                     onClick={handleSubmit}
                     disabled={isLoading || !email}
@@ -560,7 +662,7 @@ export default function QuickNoteLanding() {
                 <Alert className="bg-indigo-500/20 border-indigo-500/30 text-left">
                   <Mail className="w-4 h-4 text-white" />
                   <AlertDescription className="text-gray-300">
-                    You'll receive the download link for QuickNote v1.0 when it drops (hopefully soon). 
+                    You'll receive the download link for QuickNote v1.0 when it drops (hopefully soon).
                     Check your spam folder if you don't see it!
                   </AlertDescription>
                 </Alert>
@@ -580,8 +682,15 @@ export default function QuickNoteLanding() {
               </div>
               <span className="text-xl font-bold">QuickNote</span>
             </div>
-            <p className="text-gray-400 text-center md:text-right">
-              © 2025 QuickNote. Capture every thought, instantly.
+
+            <div className="flex items-center gap-6 text-sm text-gray-400">
+              <a href="/terms" className="hover:text-white transition-colors">Terms</a>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+              <a href="/refund" className="hover:text-white transition-colors">Refund Policy</a>
+            </div>
+
+            <p className="text-gray-400 text-sm text-center md:text-right">
+              © 2025 QuickNote. All rights reserved.
             </p>
           </div>
         </div>
